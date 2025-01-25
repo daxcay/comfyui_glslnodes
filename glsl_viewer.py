@@ -11,21 +11,25 @@ from .glsl_buffers import Buffer, DoubleBuffer
 from .glsl_utils import getSizeFromCode
 
 
+                # TODO: add support for vertex shader and 3D models
+                # "vertex_code": ("GLSL_CODE", { "dynamicPrompts": False }),
+                # "3D_model": ("3D_MODEL", { "default": None }),
+
+
 class GlslViewer:
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "fragment_code": ("GLSL_CODE", { "dynamicPrompts": False }),
+                "u_tex0": ("IMAGE", {}),
+                "u_tex1": ("IMAGE", {}),
                 "width": ("INT", { "default": 512 }),
                 "height": ("INT", { "default": 512 }),
                 "frames": ("INT", { "default": 1 }),
                 "fps": ("INT", { "default": 30 }),
             },
             "optional": {
-                # TODO: add support for vertex shader and 3D models
-                # "vertex_code": ("GLSL_CODE", { "dynamicPrompts": False }),
-                # "3D_model": ("3D_MODEL", { "default": None }),
                 "uniforms": ("GLSL_CONTEXT",),
             }
         }
